@@ -5,6 +5,28 @@
     <script type="module" src="https://unpkg.com/rapidoc/dist/rapidoc-min.js"></script>
   </head>
   <body>
-    <rapi-doc spec-url = "https://raw.githubusercontent.com/OceanNetworksCanada/onc_openapi_sandbox/main/definition/onc_openapi_definition.json"> </rapi-doc>
+    <rapi-doc
+    spec-url = "https://data.oceannetworks.ca/api/definition"
+    show-info = "true"
+    theme = "light"
+    show-header = "false" 
+    >
+    <img slot="nav-logo" src="https://www.oceannetworks.ca/svg/logo.svg" width="150px" height="150px"/>
+    <style slot="header">   rapi-doc::part(btn){ border-radius: 15px; }
+      rapi-doc::part(btn) {
+        background-color: #4DB3D0;
+        color: #fff;
+        border-color: #4DB3D0;
+        border-radius: 2px;
+      }
+      rapi-doc::part(btn-selected-response-status) {
+        background-color: #BADC76;
+        color: #fff;
+        border-color: #BADC76;
+      }
+      div.nav-bar-paths-under-tag {
+        margin: 50px;
+        color: #4DB3D0
+      }</style>
   </body>
 </html>
