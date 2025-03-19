@@ -67,7 +67,6 @@
                         "type": "integer",
                         "description": "Quality flag for the data point."
                       }
-                      // Add other relevant properties for your raw data
                     }
                   }
                 }
