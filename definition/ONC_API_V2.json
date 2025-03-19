@@ -1,0 +1,90 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Raw Data Service API",
+    "version": "2.0.0",
+    "description": "API for accessing raw data based on location and device category."
+  },
+  "servers": [
+    {
+      "url": "/api/v2.0"
+    }
+  ],
+  "paths": {
+    "/locations/{locationCode}/deviceCategories/{deviceCategoryCode}/dataServices/rawData": {
+      "get": {
+        "summary": "Retrieve raw data by location and device category.",
+        "description": "Fetches raw data for a specific location and device category.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "locationCode",
+            "required": true,
+            "description": "Code identifying the location.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "deviceCategoryCode",
+            "required": true,
+            "description": "Code identifying the device category.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with raw data.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "description": "Raw data point.",
+                    "properties": {
+                      "timestamp": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Timestamp of the data point."
+                      },
+                      "value": {
+                        "type": "number",
+                        "description": "Raw data value."
+                      },
+                      "unit": {
+                        "type": "string",
+                        "description": "Unit of the data value."
+                      },
+                      "sensorId": {
+                        "type": "string",
+                        "description": "Identifier of the sensor."
+                      },
+                      "qualityFlag": {
+                        "type": "integer",
+                        "description": "Quality flag for the data point."
+                      }
+                      // Add other relevant properties for your raw data
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input parameters."
+          },
+          "404": {
+            "description": "No data found for the given location and device category."
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        }
+      }
+    }
+  }
+}
